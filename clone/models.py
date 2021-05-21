@@ -33,7 +33,7 @@ class Profile(models.Model):
     profile_pic = models.ImageField(upload_to='profilepics/',null= True)
     bio = HTMLField(blank=True)
     name = models.CharField(max_length=255)
-    username = models.ForeignKey(User,on_delete=models.CASCADE)
+    username = models.ForeignKey(User,on_delete=models.CASCADE, null= True)
     phonenumber = models.IntegerField(blank=True)
     gender = models.CharField(max_length=15,choices=Gender,default="Male")
 
