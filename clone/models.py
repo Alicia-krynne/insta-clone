@@ -30,12 +30,11 @@ class Image(models.Model):
         self.delete()
 
 class Profile(models.Model):
-    profile_pic = models.ImageField(upload_to='profilepics/')
-    bio = HTMLField()
+    profile_pic = models.ImageField(upload_to='profilepics/',null= True)
+    bio = HTMLField(blank=True)
     name = models.CharField(max_length=255)
     username = models.ForeignKey(User,on_delete=models.CASCADE)
-    email= models.EmailField()
-    phonenumber = models.IntegerField()
+    phonenumber = models.IntegerField(blank=True)
     gender = models.CharField(max_length=15,choices=Gender,default="Male")
 
     def __str__(self):
@@ -49,3 +48,11 @@ class Profile(models.Model):
 
     def delete_profile(self):
         self.delete()
+
+class Comment(models.Model):
+    comment = models.CharField(max_length=300)
+    username = models.ForeignKey(User,on_delete=models.CASCADE)
+    
+
+    def save_comment(self):
+        self.save()
