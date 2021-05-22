@@ -120,7 +120,7 @@ def comment(request):
     image = request.GET.get('image')
     username = request.user
 
-    comment = Comment(comment=comment,post=post,username=username)
+    comment = Comment(comment=comment,image=image,username=username)
     comment.save()
 
     recent_comment= f'{Comment.objects.all().last().comment}'
