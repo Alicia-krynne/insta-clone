@@ -10,7 +10,7 @@ urlpatterns=[
     path ('profile/',views.profile,name='profile'),
     path('comment/',views.comment,name='comment'),
     path('like/', views.like, name='like'),
-    
+
 
     #url(r'^new/location$',views.new_location, name='new-location'),
 #     url(r'^profile/',views.profile, name='profile'),

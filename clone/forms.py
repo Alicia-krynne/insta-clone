@@ -6,7 +6,7 @@ from .models import Image,Profile,Comment
 #         model=Location
 #         fields='__all__'
 
-class imageForm(forms.ModelForm):
+class ImageForm(forms.ModelForm):
     class Meta:
         model=Image
         exclude=['username','likes','profile_pic']
