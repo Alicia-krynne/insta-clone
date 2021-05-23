@@ -12,7 +12,7 @@ urlpatterns=[
     path('like/', views.like, name='like'),
     path('edit/profile',views.edit_profile, name='edit-profile'),
     path('user-profile/',views.userprofile,name='user-profile'),
-    #path('change_profile/(?P<username>\w{0,50})',views.change_profile,name='change_profile'),
+    path('change_profile/',views.change_profile,name='change_profile'),
 
 
 

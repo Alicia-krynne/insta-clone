@@ -163,3 +163,22 @@ def userprofile(request,profile_id):
     except:
         raise ObjectDoesNotExist()
     return render(request,"user-profile.html",{"profile":profile,"image":image,"form":form,"comments":comments})
+
+
+@login_required(login_url='/accounts/login/')
+def change_profile(request,username):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST,request.FILES)
+        if form.is_valid():
+            caption = form.save(commit=False)
+            caption.username = current_user
+            caption.save()
+        return redirect('index')
+    elif Profile.objects.get(username=current_user):
+        profile = Profile.objects.get(username=current_user)
+        form = ProfileForm(instance=profile)
+    else:
+        form = ProfileForm()
+
+    return render(request,'change_profile.html',{"form":form})
