@@ -52,7 +52,7 @@ def new_image(request):
 
             image.save()
 
-        return redirect('Timeline')
+        return redirect('Homepage')
 
     else:
         form = ImageForm()

@@ -26,7 +26,7 @@
       <div class="logo-header">
         <img alt="Brand" src="{% static 'img/brand.png' %}" height=70 >
       </div>
-      <form action="{% url 'new-post'%}" method="post"  enctype="multipart/form-data">
+      <form action="{% url 'new-image'%}" method="post"  enctype="multipart/form-data">
 
         {% csrf_token%}
         {% bootstrap_form form %}

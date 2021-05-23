@@ -11,21 +11,11 @@ urlpatterns=[
     path('comment/',views.comment,name='comment'),
     path('like/', views.like, name='like'),
     path('edit/profile',views.edit_profile, name='edit-profile'),
-    path('user-profile/',views.userprofile,name='user-profile'),
-    path('change_profile/',views.change_profile,name='change_profile'),
+    path('user-profile/(?P<username>\w{0,50})',views.userprofile,name='user-profile'),
+    path('change_profile/(?P<username>\w{0,50})',views.change_profile,name='change_profile'),
 
 
 
-    #url(r'^new/location$',views.new_location, name='new-location'),
-#     url(r'^profile/',views.profile, name='profile'),
-#     url(r'^edit/profile$',views.edit_profile, name='edit-profile'),
-#     url(r'^explore/',views.explore, name='explore'),
-#     url(r'^like/$', views.like, name='like'),
-#     url(r'^search/',views.search_results, name='search_results'),
-#     url(r'^user-profile/(\d+)',views.userprofile,name='user-profile'),
-#     # url(r'^user-profile/(?P<username>\w{0,50})',views.userprofile,name='user-profile'),
-#     
-#     url(r'^change_profile/(?P<username>\w{0,50})',views.change_profile,name='change_profile'),
  ]
 
 if settings.DEBUG:
