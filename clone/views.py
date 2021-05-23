@@ -147,3 +147,19 @@ def edit_profile(request):
         form=ProfileForm()
 
     return render(request,'edit_profile.html',{"form":form})
+
+
+@login_required(login_url='/accounts/login/')
+def userprofile(request,profile_id):
+    current_user=request.user
+    form =CommentForm()
+    comments=Comment.objects.all()
+
+    try:
+        all_images=Image.objects.all()
+        profile = Profile.objects.get(id=profile_id)
+        prof_username = profile.username
+        image = Image.objects.filter(username=prof_username)
+    except:
+        raise ObjectDoesNotExist()
+    return render(request,"user-profile.html",{"profile":profile,"image":image,"form":form,"comments":comments})
