@@ -86,7 +86,7 @@ def profile(request):
 
     try:
         profile = Profile.objects.get(username=current_user)
-        image = Image.objects.filter(username_id=current_user_id)
+        image = Image.objects.filter(name=current_user)
         title = profile.name
         username = profile.username
         image_number= len(image)
