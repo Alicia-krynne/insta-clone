@@ -56,3 +56,7 @@ class Comment(models.Model):
 
     def save_comment(self):
         self.save()
+
+class Followers(models.Model):
+    username= models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.CharField(max_length=100)

@@ -10,6 +10,8 @@ urlpatterns=[
     path ('profile/',views.profile,name='profile'),
     path('comment/',views.comment,name='comment'),
     path('like/', views.like, name='like'),
+    path('edit/profile',views.edit_profile, name='edit-profile'),
+
 
 
     #url(r'^new/location$',views.new_location, name='new-location'),
