@@ -67,8 +67,7 @@ def profile(request):
     comments=Comment.objects.all()
     comment_number=len(comments)
     print(current_user)
-    # print(current_user_id)
-
+   
     image_id = None
     if request.method == 'GET':
         image_id = request.GET.get('image_id')
@@ -173,7 +172,7 @@ def change_profile(request,username):
             caption = form.save(commit=False)
             caption.username = current_user
             caption.save()
-        return redirect('index')
+        return redirect('')
     elif Profile.objects.get(username=current_user):
         profile = Profile.objects.get(username=current_user)
         form = ProfileForm(instance=profile)
