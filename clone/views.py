@@ -39,7 +39,7 @@ def search_results(request):
 @login_required(login_url='/accounts/login/')
 def new_image(request):
     current_user = request.user
-    profile = Profile.objects.get(username=current_user)
+    profile = Profile.objects.all()
 
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
@@ -85,17 +85,16 @@ def profile(request):
         return redirect('profile.html')
 
     try:
-        profile = Profile.objects.get(username=current_user)
+        profile = Profile.objects.all()
         image = Image.objects.filter(name=current_user)
-        title = profile.name
-        username = profile.username
+        title = Profile.objects.filter(name=current_user)
         image_number= len(image)
         
     except ObjectDoesNotExist:
         return redirect('edit-profile')
 
 
-    return render(request,"profile.html",{"profile":profile,"image":image,"form":form,"image_number":image_number,"title":title,"username":username,"comments":comments,"comment_number":comment_number})
+    return render(request,"profile.html",{"profile":profile,"image":image,"form":form,"image_number":image_number,"title":title,"comments":comments,"comment_number":comment_number})
 
 @login_required(login_url='/accounts/login/')
 def like(request):
@@ -162,7 +161,7 @@ def userprofile(request,profile_id):
         image = Image.objects.filter(username=prof_username)
     except:
         raise ObjectDoesNotExist()
-    return render(request,"user-profile.html",{"profile":profile,"image":image,"form":form,"comments":comments})
+    return render(request,"user-profile.html",{"profile":profile,"image":image,"form":form,"comments":comments ,"profile_id":profile_id})
 
 
 @login_required(login_url='/accounts/login/')
